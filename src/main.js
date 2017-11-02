@@ -6,10 +6,12 @@ import daoStyle from 'dao-style-package-vue';
 import App from './App';
 import Sidebar from './components/Sidebar';
 import FoodMenu from './components/food-menu/food-menu.vue';
+import StatusBar from './components/status-bar/status-bar.vue';
 import router from './router';
 
 Vue.component('Sidebar', Sidebar);
 Vue.component('FoodMenu', FoodMenu);
+Vue.component('StatusBar', StatusBar);
 
 Vue.config.productionTip = false;
 

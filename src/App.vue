@@ -3,7 +3,8 @@
     <div class="layout">
       <sidebar></sidebar>
       <div class="layout-content">
-        <router-view/>
+        <status-bar></status-bar>
+        <router-view class="content"></router-view>
       </div>
     </div>
   </div>
