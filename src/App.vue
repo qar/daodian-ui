@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="layout">
-      <sidebar></sidebar>
+      <left-nav></left-nav>
       <div class="layout-content">
         <status-bar></status-bar>
         <router-view class="content"></router-view>
