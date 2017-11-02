@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
     'html'
   ],
-  global: {
+  globals: {
     Noty: true,
   },
   // check if imports actually resolve
