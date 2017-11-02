@@ -1,9 +1,10 @@
 <div>
   <div class="food-menu">
     <div class="menu-header">
-      <div class="dao-btn blue">Button 1</div>
-      <div class="dao-btn blue">Button 2</div>
-      <div class="dao-btn blue">Button 3</div>
+      <router-link to="/new" tag="div" class="dao-btn blue">录入菜品</router-link>
+
+      <div class="dao-btn blue">批量录入</div>
+      <div class="dao-btn blue">发布今日菜单</div>
 
       <div class="search-box">
         <dao-input placeholder="Search" :search="true"></dao-input>
@@ -33,9 +34,7 @@
       </thead>
       <tbody>
         <tr>
-          <td class="thumbnail">
-            <img src="/static/sample.jpg" class="thumbnail">
-          </td>
+          <td class="thumbnail"><img src="/static/sample.jpg" class="thumbnail"></td>
 
           <td class="name">
             <div class="item-major">

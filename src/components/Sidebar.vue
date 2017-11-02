@@ -1,15 +1,16 @@
 <template>
   <nav class="dao-left-nav">
-    <div class="logo"></div>
+    <div class="logo">
+      <router-link tag="div" to="/">
+        <img src="/static/sample.jpep">
+      </router-link>
+    </div>
 
     <div class="dao-left-nav-section"
-      <h2 class="dao-left-nav-title">Section</h2>
-
       <div class="dao-left-nav-group">
-        <div class="dao-left-nav-ul-title">
-
-          <span class="dao-left-nav-ul-title-name">2222</span>
-          <span class="dao-numeric-badge"></span>
+        <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }">
+          <span class="dao-left-nav-ul-title-name">菜品库</span>
+          <span class="dao-numeric-badge">12</span>
         </div>
       </div>
     </div>
@@ -116,7 +117,9 @@
     }
   }
 
-  .dce-logo {
+  .logo {
+    margin-bottom: 20px;
+    margin-top: 20px;
     position: relative;
     width: 200px;
     height: $status-bar-height;
@@ -453,5 +456,11 @@ $scroll-margin-width: 2px;
 <script>
 export default {
   name: 'Sidebar',
+
+  computed: {
+    isActive() {
+      return true;
+    },
+  },
 };
 </script>
