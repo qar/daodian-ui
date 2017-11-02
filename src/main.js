@@ -4,14 +4,8 @@ import Vue from 'vue';
 import daoStyle from 'dao-style-package-vue';
 
 import App from './App';
-import Sidebar from './components/Sidebar';
-import FoodMenu from './components/food-menu/food-menu.vue';
-import StatusBar from './components/status-bar/status-bar.vue';
 import router from './router';
-
-Vue.component('Sidebar', Sidebar);
-Vue.component('FoodMenu', FoodMenu);
-Vue.component('StatusBar', StatusBar);
+import './components';
 
 Vue.config.productionTip = false;
 
@@ -22,5 +16,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App, Sidebar },
+  components: { App },
 });
