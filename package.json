@@ -17,7 +17,8 @@
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-upload-component": "^2.6.3"
   },
   "devDependencies": {
     "dao-style-package-vue": "git+https://cisy@bitbucket.org/cisy/dao-style-package-vue.git",
