@@ -2,10 +2,10 @@
   <div class="dao-table-container">
     <div class="add-new-item">
       <div class="food-pic">
-        <img src="imagePreview" class="img-preview mt-md" v-show="imagePreview">
-        <div class="img-preview" v-show="!imagePreview"></div>
+        <img :src="imagePreview" class="img-preview" v-show="imagePreview">
+        <div class="img-preview" v-show="!imagePreview">图片预览</div>
 
-        <file-upload class="dao-btn blue mt-md uploadFile"
+        <file-upload class="dao-btn blue uploadFile"
                      type="file"
                      accept="image/*"
                      v-model="food.image"
@@ -16,9 +16,9 @@
 
       <div class="food-desc">
         <dao-input type="text"></dao-input>
-        <textarea class="dao-control" rows="10">
-        </textarea>
+        <textarea class="dao-control" rows="10"></textarea>
 
+        <div class="dao-btn blue" @click="add">添加</div>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
 
 <script>
 import FileUpload from 'vue-upload-component';
+import foodsApi from '@/apis/food';
 
 export default {
   name: 'NewItemPage',
@@ -44,12 +45,16 @@ export default {
   },
 
   methods: {
+    add() {
+      foodsApi.uploadFoodPic();
+    },
+
     handleFileInput(file) {
-      debugger;
       if (!file) return;
       // 上传
 
       this.imagePreview = window.URL.createObjectURL(file.file);
+      console.log('####', this.imagePreview);
       // this.upload(type, file.file)
       //   .then(res => {
       //     const params = {};
@@ -64,9 +69,14 @@ export default {
 
 <style lang="scss" scoped>
 
-div.img-preview {
+.img-preview {
   width: 300px;
   height: 300px;
+  display: inline-block;
+  line-height: 300px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 20px;
   margin-bottom: 20px;
   background-color: #eee;
   display: inline-block;
@@ -75,7 +85,7 @@ div.img-preview {
 
 .uploadFile {
   width: 300px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 
 .add-new-item {
@@ -98,6 +108,10 @@ div.img-preview {
     & > * {
       width: 100%;
       margin-bottom: 20px;
+    }
+
+    .dao-btn {
+      margin: 0 auto;
     }
   }
 }
