@@ -1,5 +1,6 @@
 <template>
   <div>
+    <food-menu></food-menu>
   </div>
 </template>
 

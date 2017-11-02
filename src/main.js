@@ -3,9 +3,11 @@
 import Vue from 'vue';
 import App from './App';
 import Sidebar from './components/Sidebar';
+import FoodMenu from './components/food-menu/food-menu.vue';
 import router from './router';
 
 Vue.component('Sidebar', Sidebar);
+Vue.component('FoodMenu', FoodMenu);
 
 Vue.config.productionTip = false;
 
