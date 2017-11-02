@@ -1,3 +1,16 @@
-* {
-  color: red;
+@import '~daoColor';
+
+.search-box {
+  float: right;
+}
+
+img.thumbnail {
+  width: 80px;
+  height: 80px;
+}
+
+.menu-content {
+  .item {
+    display: flex;
+  }
 }

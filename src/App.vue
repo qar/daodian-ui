@@ -16,7 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '~@/assets/common.scss';
   @import '~daoColor';
+
   body {
     margin: 0; // TODO move to reset.scss
   }
