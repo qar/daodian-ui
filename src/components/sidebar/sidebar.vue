@@ -2,7 +2,7 @@
   <nav class="dao-left-nav">
     <div class="logo">
       <router-link tag="div" to="/">
-        <img src="/static/sample.jpep">
+        <img src="/static/brand.png">
       </router-link>
     </div>
 
@@ -119,7 +119,6 @@
 
   .logo {
     margin-bottom: 20px;
-    margin-top: 20px;
     position: relative;
     width: 200px;
     height: $status-bar-height;
