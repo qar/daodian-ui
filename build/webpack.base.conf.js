@@ -24,6 +24,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      daoColor$: resolve('node_modules/dao-style-package-vue/styles/dao-color.scss'),
     }
   },
   module: {

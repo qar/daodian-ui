@@ -2,7 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
+import Sidebar from './components/Sidebar';
 import router from './router';
+
+Vue.component('Sidebar', Sidebar);
 
 Vue.config.productionTip = false;
 
@@ -11,5 +14,5 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App },
+  components: { App, Sidebar },
 });

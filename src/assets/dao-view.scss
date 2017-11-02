@@ -1,0 +1,189 @@
+@import '~daoColor';
+// 注：这个文件的代码都是从原项目抄过来的
+// 各个详情页的header部分
+$dao-view-margin-h: 40px;
+$dao-view-margin-v: 20px;
+
+.dao-view-header {
+  $padding-horizon: 40px; //水平方向边距
+  // margin: 0 (-$padding-horizon) 20px (-$padding-horizon);
+  a:hover {
+    cursor: pointer;
+  }
+  .header-top {
+    padding: 20px $padding-horizon;
+    border-bottom: solid 1px $white-dark;
+    background-color: $white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .header-img {
+      margin-right: 20px;
+      height: 100px;
+      svg,
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 4px;
+      }
+    }
+    .header-content {
+      flex-grow: 1;
+      .content-top {
+        height: 32px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .header-name {
+          max-width: 70%;
+          font-size: 25px;
+          line-height: 25px;
+          color: $black-light;
+        }
+        .header-btn-group {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .content-bottom {
+        min-height: 48px;
+        color: $grey-dark;
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        position: relative;
+        .content-item {
+          font-size: 14px;
+          line-height: 24px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .header-bottom {
+    padding: 7px $padding-horizon;
+    border-bottom: solid 1px $white-dark;
+    box-shadow: 0px 1px 4px 0px rgba($grey-light, 0.3);
+    background-color: $white-lighter;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 13px;
+    line-height: 24px;
+    color: $grey-dark;
+    [class^=col-] {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .col-3 {
+      width: 25%;
+    }
+    .col-4 {
+      width: 33.33%;
+    }
+    .col-6 {
+      width: 50%;
+    }
+    .col-8 {
+      width: 66.66%;
+    }
+  }
+  .table-count {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+// slideable panel 中的 dao-view-header
+.slideable-panel {
+  .dao-view-header {
+    margin: 0;
+    flex-shrink: 0;
+    .header-top {
+      padding: 20px 30px;
+    }
+    .header-bottom {
+      padding: 16px 31px;
+    }
+    .content-top {
+      align-items: center !important;
+      .header-name {
+        svg {
+          width: 25px;
+          height: 25px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .content-bottom {
+      justify-content: space-between;
+      align-items: center !important;
+    }
+    .close {
+      font-size: 64px;
+      font-weight: 300;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .top-tab {
+      display: flex;
+      color: $grey-dark;
+      background-color: $white-light;
+      border-bottom: solid 1px $white-dark;
+      box-shadow: 0px 1px 4px 0px rgba($grey-light, 0.3);
+      .tab-item {
+        flex: 1;
+        padding: 15px 63px;
+        text-align: center;
+        cursor: pointer;
+        &:not(:last-child) {
+          border-right: 1px solid $white-dark;
+        }
+        &.active {
+          color: $blue;
+          background-color: white;
+          border-bottom: 4px solid $blue;
+        }
+      }
+    }
+    .dao-setting-layout {
+      margin: 0;
+    }
+  }
+}
+
+// 这是详情页的内容部分
+.dao-view-main { // 此处将 dao-view-wrap --> dao-view-mian
+  display: flex;
+  margin: $dao-view-margin-v $dao-view-margin-h 0 $dao-view-margin-h;
+  .dao-view-sidebar {
+    padding: 4px;
+    width: 200px;
+    flex: 0 0 auto;
+    .dao-list-group {
+      margin-top: 0;
+      .dao-tooltip {
+        text-shadow: none;
+      }
+    }
+    // 让小徽章偏右
+    .dao-numeric-badge {
+      position: absolute;
+      right: 25px;
+      top: 11px;
+    }
+  }
+  .dao-view-content {
+    padding: 4px;
+    flex: 1 1 auto;
+    margin-left: 20px;
+    width: 0;
+    &>.dao-setting-layout:first-child {
+      margin-top: 0;
+    }
+  }
+}
