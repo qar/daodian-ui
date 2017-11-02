@@ -104,22 +104,20 @@ export default {
         promises.push(promise.then(() => true).catch(() => false));
       });
       const preNoty = new Noty({
-        text: `正在批量${ACTION_I18N[action]}...`,
+        text: '批量操作执行中，请稍候',
       }).show();
       return Promise.all(promises)
-        .then(res => {
+        .then((res) => {
           preNoty.close();
           const successLen = _.countBy(res).true || 0;
           if (successLen > 0) {
             new Noty({
-              text: `总共 ${successLen} 个${this.tableName}${ACTION_I18N[action]}成功，
-              ${promises.length - successLen} 个${ACTION_I18N[action]}失败`,
+              text: 'xxx',
               type: successLen ? 'success' : 'error',
             }).show();
           } else {
             new Noty({
-              text: `总共 0 个${this.tableName}${ACTION_I18N[action]}成功，
-              ${promises.length} 个${ACTION_I18N[action]}失败`,
+              text: '',
               type: 'error',
             }).show();
           }
@@ -128,8 +126,7 @@ export default {
         .catch(() => {
           preNoty.close();
           new Noty({
-            text: `总共 0 个${this.tableName}${ACTION_I18N[action]}成功，
-            ${promises.length} 个${ACTION_I18N[action]}失败`,
+            text: '',
             type: 'error',
           }).show();
           this.clear();
@@ -138,14 +135,14 @@ export default {
     next() {
       this.page = this.page + 1;
       // 当切换页面的时候要把所有的行变成不选中
-      _.forEach(this.currentRows, row => {
+      _.forEach(this.currentRows, (row) => {
         this.checkRow(row, false);
       });
     },
     prev() {
       this.page = this.page - 1;
       // 当切换页面的时候要把所有的行变成不选中
-      _.forEach(this.currentRows, row => {
+      _.forEach(this.currentRows, (row) => {
         this.checkRow(row, false);
       });
     },
