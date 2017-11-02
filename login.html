@@ -783,25 +783,45 @@
       <div class="landing-wrapper">
         <img class="logo" src="/static/logo.png">
 
-       <form action="/login" method="POST">
+       <form>
 
           <div class="vn-input-group">
-            <input class="vn-input" type="email" placeholder="用户名" name="email">
+            <input class="vn-input" type="text" placeholder="用户名" name="name">
           </div>
 
           <div class="vn-input-group">
-            <input class="vn-input" type="password" placeholder="密码" name="pwd">
+            <input class="vn-input" type="password" placeholder="密码" name="password">
           </div>
 
-          <div class="vn-input-group">
-            <div class="vn-btn btn-primary btn-block"
-                 onClick="document.getElementsByTagName('form')[0].submit();">登陆</div>
-            </div>
+          <div class="vn-input-group" id="submit">
+            <div class="vn-btn btn-primary btn-block">登陆</div>
           </div>
       </form>
 
     </div>
   </div>
+
+  <script>
+    function login() {
+      var form = document.getElementsByTagName('form')[0];
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/admin/login');
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.send(JSON.stringify({
+        name: form.name.value,
+        password: form.password.value
+      }));
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          localStorage.setItem("token", JSON.parse(xhr.responseText));
+        }
+      }
+    }
+
+    document.getElementById('submit').addEventListener('click', login);
+  </script>
 </body>
 </html>
 
