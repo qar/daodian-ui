@@ -9,7 +9,7 @@ export default {
       keyword: '',
       selectedRows: [],
       searchRange: [],
-      limit: 10,
+      limit: 5,
       page: 0,
     };
   },
