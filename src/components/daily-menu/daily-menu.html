@@ -1,0 +1,89 @@
+<div class="food-menu">
+  <div class="menu-header">
+    <div class="dao-btn blue" @click="add">添加菜品</div>
+    <div class="dao-btn green" @click="publish">发布</div>
+
+    <div class="search-box">
+      <dao-input placeholder="Search" :search="true"></dao-input>
+    </div>
+  </div>
+
+  <table class="menu-content dao-table slat">
+    <thead>
+      <tr>
+        <th class="thumbnail">
+          <span>图片</span>
+        </th>
+        <th class="name">
+          <span>菜名</span>
+        </th>
+        <th class="desc">
+          <span>简介</span>
+        </th>
+        <th class="rating">
+          <span>评分</span>
+        </th>
+        <th class="orders">
+          <span>近期点单</span>
+        </th>
+        <th class="operation"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in chunks[page]">
+        <td class="thumbnail"><img src="/static/sample.jpg" class="thumbnail"></td>
+
+        <td class="name">
+          <div class="item-major">
+            ddd
+          </div>
+          <div class="item-minor">
+            3333
+          </div>
+        </td>
+
+        <td class="desc">
+          <div class="item-major">
+            1111
+          </div>
+          <div class="item-minor">
+            2222
+          </div>
+        </td>
+
+        <td class="rating"><div class="item-major">★  ★  ★  ★  </div></td>
+
+        <td class="orders"><div class="item-major">4</div></td>
+
+        <td class="operation">
+          <div class="dao-btn-group">
+            <button class="dao-btn red has-icon">
+              <span class="text">移出</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="dao-table-page">
+    <div class="dao-btn-group">
+      <button class="dao-btn dao-icon ghost" @click="prev" :disabled="page === 0">
+        <svg class="icon">
+          <use xlink:href="#icon_caret-left"></use>
+        </svg>
+      </button>
+      <button class="dao-btn dao-icon ghost" @click="next" :disabled="chunks.length === 0 || page === chunks.length - 1">
+        <svg class="icon">
+          <use xlink:href="#icon_caret-right"></use>
+        </svg>
+      </button>
+    </div>
+    <span class="dao-table-page-span">
+    {{ chunks.length > 0 ? page * limit + 1 : 0 }}
+      -
+    {{ chunks.length === 0 || page === chunks.length - 1 ? currentRows.length : page * limit + limit }}
+    ，共 {{ currentRows.length }} 个{{tableName}}
+    </span>
+  </div>
+</div>
