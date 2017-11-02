@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import daoStyle from 'dao-style-package-vue';
+import $http from '@/utils/http';
 
 import Noty from 'noty';
 import 'noty/lib/noty.css';
@@ -28,6 +29,9 @@ window.Noty = Noty;
 Vue.config.productionTip = false;
 
 Vue.use(daoStyle);
+
+// axios
+Vue.prototype.$http = $http;
 
 /* eslint-disable no-new */
 new Vue({

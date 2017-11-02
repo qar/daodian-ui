@@ -13,12 +13,22 @@ const foodItem = {
   rating: '',
 };
 
+import foodsApi from '@/apis/food';
+
 export default {
   name: 'MenuPage',
   data() {
     return {
       items: [foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem, foodItem ],
     };
+  },
+
+  created() {
+    console.log('DEBUG on created event');
+    foodsApi.getFoodsList()
+      .then(foods => {
+        console.log('DEBUG got foods', foods);
+      });
   },
 };
 </script>
