@@ -1,0 +1,43 @@
+<div class="food-cart wrap-template">
+  <div class="wrapper-content">
+    <div class="menu-header">
+      <div class="dao-btn green">发布</div>
+    </div>
+
+    <table class="menu-content dao-table slat">
+      <thead>
+        <tr>
+          <th class="thumbnail">
+            <span>图片</span>
+          </th>
+          <th class="name">
+            <span>菜名</span>
+          </th>
+          <th class="operation"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in chunks[page]">
+          <td class="thumbnail"><img src="/static/sample.jpg" class="thumbnail"></td>
+
+          <td class="name">
+            <div class="item-major">
+              ddd
+            </div>
+            <div class="item-minor">
+              3333
+            </div>
+          </td>
+
+          <td class="operation">
+            <div class="dao-btn-group">
+              <button class="dao-btn ghost has-icon" @click="removeFromCart(item)">
+                <span class="text">移出</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,12 +1,7 @@
 <div class="food-menu">
   <div class="menu-header">
+    <div class="dao-btn green" @click="showFoodCart = true">菜篮子（{{ selectedRows.length}}）</div>
     <router-link to="/new" tag="div" class="dao-btn blue">录入菜品</router-link>
-
-    <!-- TODO feature
-    <div class="dao-btn blue">批量录入</div>
-    -->
-
-    <div class="dao-btn blue" @click="publish">发布今日菜单</div>
 
     <div class="search-box">
       <dao-input placeholder="Search" :search="true"></dao-input>
@@ -62,8 +57,8 @@
 
         <td class="operation">
           <div class="dao-btn-group">
-            <button class="dao-btn ghost has-icon">
-              <span class="text">Contrl</span>
+            <button class="dao-btn ghost has-icon" @click="addToCart(item)">
+              <span class="text">加到菜篮子</span>
             </button>
           </div>
         </td>
@@ -91,4 +86,9 @@
     ，共 {{ currentRows.length }} 个{{tableName}}
     </span>
   </div>
+
+  <!-- 侧滑框 -->
+  <slideable-panel :active.sync="showFoodCart">
+    <food-cart :rows="selectedRows"></food-cart>
+  </slideable-panel>
 </div>
