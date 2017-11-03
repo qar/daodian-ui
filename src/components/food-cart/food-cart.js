@@ -22,6 +22,20 @@ export default {
         deadline: '2017-11-03',
         description: '',
         food_ids: this.rows.map(f => f.id).join(','),
+      }).then(() => {
+        new Noty({
+          text: '菜单创建成功',
+          type: 'error',
+        }).show();
+      }).catch((err) => {
+        let errMsg = err.response.data.message;
+        if (err.response.data.id === 'already_exist') {
+          errMsg = '今日菜单已经存在';
+        }
+        new Noty({
+          text: errMsg,
+          type: 'error',
+        }).show();
       });
     },
 
