@@ -7,7 +7,7 @@
 
   <div class="dao-left-nav-section">
     <div class="dao-left-nav-group">
-      <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }" @click="routeTo({ name: 'menu' })">
         <span class="dao-left-nav-ul-title-name">菜品库</span>
         <span class="dao-numeric-badge">12</span>
       </div>

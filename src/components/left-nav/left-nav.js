@@ -6,4 +6,11 @@ export default {
       return true;
     },
   },
+
+  methods: {
+    // 页面跳转 state is like { name: 'menu' } or /menu
+    routeTo(state) {
+      this.$router.push(state);
+    },
+  },
 };

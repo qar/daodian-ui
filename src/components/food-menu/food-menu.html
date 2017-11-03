@@ -1,6 +1,6 @@
 <div class="food-menu">
   <div class="menu-header">
-    <div class="dao-btn green" @click="showFoodCart = true">菜篮子（{{ selectedRows.length}}）</div>
+    <div class="dao-btn green" @click="showFoodCart = true">菜篮子（{{ cartCount }}）</div>
     <router-link to="/new" tag="div" class="dao-btn blue">录入菜品</router-link>
 
     <div class="search-box">
@@ -31,29 +31,19 @@
     </thead>
     <tbody>
       <tr v-for="item in chunks[page]">
-        <td class="thumbnail"><img src="/static/sample.jpg" class="thumbnail"></td>
+        <td class="thumbnail"><img :src="item.picture" class="thumbnail"></td>
 
         <td class="name">
-          <div class="item-major">
-            ddd
-          </div>
-          <div class="item-minor">
-            3333
-          </div>
+          <div class="item-major">{{ item.name }}</div>
         </td>
 
         <td class="desc">
-          <div class="item-major">
-            1111
-          </div>
-          <div class="item-minor">
-            2222
-          </div>
+          <div class="item-major">{{ item.description }}</div>
         </td>
 
-        <td class="rating"><div class="item-major">★  ★  ★  ★  </div></td>
+        <td class="rating"><div class="item-major"><span v-for="n in Array(Math.round(item.rate))">★ </span></div></td>
 
-        <td class="orders"><div class="item-major">4</div></td>
+        <td class="orders"><div class="item-major">{{ item.rater_count }}</div></td>
 
         <td class="operation">
           <div class="dao-btn-group">

@@ -14,6 +14,12 @@ export default {
     };
   },
 
+  computed: {
+    cartCount() {
+      return this.selectedRows.length;
+    },
+  },
+
   methods: {
     // 发布今日菜单
     publish() {
@@ -22,9 +28,10 @@ export default {
 
     // 加到菜篮子
     addToCart(item) {
-      console.log('DEBUG add to cart');
       // checkRow 是从 List 组件继承的方法
-      this.checkRow(this.rows, item);
+      this.$nextTick(() => {
+        this.checkRow(this.rows, item);
+      });
     },
   },
 };
