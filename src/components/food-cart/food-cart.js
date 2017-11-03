@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import List from '@/components/list/list';
+import foodsApi from '@/apis/food';
 
 export default {
   name: 'FoodMenu',
@@ -16,8 +17,12 @@ export default {
 
   methods: {
     // 发布今日菜单
-    publish() {
-      console.log('DEBUG publish food menu');
+    addMenu() {
+      foodsApi.addMenu({
+        deadline: '2017-11-03',
+        description: '',
+        food_ids: this.rows.map(f => f.id).join(','),
+      });
     },
 
     removeFromCart(item) {
