@@ -8,7 +8,7 @@
   <table class="menu-content dao-table slat">
     <thead>
       <tr>
-        <th class="thumbnail">
+        <th class="thumbnail name th-name">
           <span>图片</span>
         </th>
 
@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <tr v-for="item in chunks[page]">
-        <td class="thumbnail">
+        <td class="thumbnail name td-name">
           <img :src="food.picture" class="thumbnail" v-for="food in item.foods" :title="food.name">
         </td>
 

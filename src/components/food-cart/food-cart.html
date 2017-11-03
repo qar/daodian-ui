@@ -7,7 +7,7 @@
     <table class="menu-content dao-table slat" v-if="rows && rows.length">
       <thead>
         <tr>
-          <th class="thumbnail">
+          <th class="thumbnail name th-name">
             <span>图片</span>
           </th>
           <th class="name">
@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr v-for="item in chunks[page]">
-          <td class="thumbnail"><img :src="item.picture" class="thumbnail"></td>
+          <td class="thumbnail name td-name"><img :src="item.picture" class="thumbnail"></td>
 
           <td class="name">
             <div class="item-major">{{ item.name }}</div>
