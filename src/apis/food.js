@@ -4,6 +4,10 @@ function getFoodsList() {
   return $http.get('/api/foods').then(res => res.data);
 }
 
+function deleteFood(id) {
+  return $http.delete(`/api/food/${id}`).then(res => res.data);
+}
+
 function addFood(params) {
   return $http.post('/api/foods', params).then(res => res.data);
 }
@@ -36,5 +40,6 @@ export default {
   uploadFoodPic,
   addFood,
   addMenu,
+  deleteFood,
   todayMenu,
 };

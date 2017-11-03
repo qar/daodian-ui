@@ -51,6 +51,9 @@
           <button class="dao-btn green has-icon" @click="addToCart(item)" v-show="cart.indexOf(item.id) < 0" :disabled="todayMenu">
             <span class="text">加到菜篮子</span>
           </button>
+          <button class="dao-btn red has-icon" @click="deleteFood(item)">
+            <span class="text">删除</span>
+          </button>
 
           <button class="dao-btn red has-icon" @click="removeFromCart(item)" v-show="cart.indexOf(item.id) >= 0">
             <span class="text">移出</span>
