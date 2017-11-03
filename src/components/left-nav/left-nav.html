@@ -13,5 +13,14 @@
       </div>
     </div>
   </div>
+
+  <div class="dao-left-nav-section">
+    <div class="dao-left-nav-group">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }" @click="routeTo({ name: 'historyMenu' })">
+        <span class="dao-left-nav-ul-title-name">历史菜单</span>
+        <span class="dao-numeric-badge">12</span>
+      </div>
+    </div>
+  </div>
 </nav>
 
