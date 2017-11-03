@@ -1,5 +1,6 @@
 <template>
   <food-menu class="dao-table-container"
+             @request-refresh="getFoods"
              :rows="items" v-if="items">
   </food-menu>
 </template>
@@ -17,11 +18,16 @@ export default {
   },
 
   created() {
-    foodsApi.getFoodsList()
-      .then(foods => {
-        this.items = foods;
-        console.debug('Got foods list', this.items);
-      });
+    this.getFoods();
+  },
+
+  methods: {
+    getFoods() {
+      foodsApi.getFoodsList()
+        .then(foods => {
+          this.items = foods;
+        });
+    }
   },
 };
 </script>
