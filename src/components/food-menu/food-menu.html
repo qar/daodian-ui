@@ -4,6 +4,7 @@
     <div class="dao-btn blue" v-if="todayMenu" @click="routeTo({ name: 'todayMenu'})">今日菜单（{{ todayMenu.foods.length }}）</div>
     <router-link to="/new" tag="div" class="dao-btn blue">录入菜品</router-link>
     <a href="/api/report/today/excel" target="_blank" class="dao-btn blue">导出今日点单统计</a>
+    <a href="/api/report/excel" target="_blank" class="dao-btn blue">导出统计总表</a>
 
     <div class="search-box">
       <dao-input placeholder="Search" :search="true"></dao-input>
