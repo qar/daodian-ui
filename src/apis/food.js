@@ -13,6 +13,11 @@ function addMenu(params) {
   return $http.post('/api/menus', params).then(res => res.data);
 }
 
+// 获取今日菜单
+function todayMenu() {
+  return $http.get('/api/menus/today').then(res => res.data);
+}
+
 function uploadFoodPic(file) {
   return $http.request({
     method: 'POST',
@@ -26,4 +31,5 @@ export default {
   uploadFoodPic,
   addFood,
   addMenu,
+  todayMenu,
 };

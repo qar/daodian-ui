@@ -13,6 +13,11 @@ export default {
       type: Array,
       default: [],
     },
+
+    mode: {
+      type: String,
+      default: 'all',
+    },
   },
 
   methods: {

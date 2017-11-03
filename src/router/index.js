@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import MenuPage from '@/pages/menu';
 import NewItemPage from '@/pages/new';
 import DailyPublishPage from '@/pages/daily';
+import TodayMenuPage from '@/pages/today-menu';
 
 Vue.use(Router);
 
@@ -24,6 +25,12 @@ export default new Router({
       path: '/today',
       name: 'dailyPublish',
       component: DailyPublishPage,
+    },
+
+    {
+      path: '/today-menu',
+      name: 'todayMenu',
+      component: TodayMenuPage,
     },
 
     {

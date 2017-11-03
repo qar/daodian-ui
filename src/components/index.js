@@ -5,6 +5,7 @@ import LeftNav from '@/components/left-nav/left-nav.vue';
 import FoodMenu from '@/components/food-menu/food-menu.vue';
 import FoodCart from '@/components/food-cart/food-cart.vue';
 import DailyFoodMenu from '@/components/daily-menu/daily-menu.vue';
+import MenuDetail from '@/components/menu-detail/menu-detail.vue';
 import StatusBar from '@/components/status-bar/status-bar.vue';
 import SlideablePanel from '@/components/slideable-panel/slideable-panel';
 
@@ -14,6 +15,7 @@ const components = {
   FoodMenu,
   FoodCart,
   LeftNav,
+  MenuDetail,
   StatusBar,
   SlideablePanel,
 };

@@ -1,6 +1,6 @@
 <div class="food-cart wrap-template">
   <div class="wrapper-content">
-    <div class="menu-header">
+    <div class="menu-header" v-if="mode === 'all'">
       <div class="dao-btn green" @click="addMenu">发布</div>
     </div>
 
@@ -24,18 +24,20 @@
             <div class="item-major">{{ item.name }}</div>
           </td>
 
-          <td class="operation">
+          <td class="operation" v-if="mode === 'all'">
             <button class="dao-btn red has-icon" @click="removeFromCart(item)">
               <span class="text">移出</span>
             </button>
           </td>
+
+          <td v-if="mode !== 'all'"></td>
         </tr>
       </tbody>
     </table>
 
     <empty-state v-if="!rows || !rows.length" text="还没有添加菜品, 饿着肚子怎么行" class="empty-state"></empty-state>
 
-    <textarea class="dao-control" rows="10" style="width: 100%; margin-top: 50px"> 为了让大家好好工作，公司每天会统一为大家订购美味加班餐，保证大家肚子饱饱、吃饭香香、请奋斗在前线的每一位同学们提前邮件回复当日餐品以便于我能够合理计算当日订餐数量！！！ 订餐截止时间：17点00分  请在17点之前回复，17点或之后选餐结束   谢谢！
+    <textarea class="dao-control" rows="10" v-if="mode === 'all'"> 为了让大家好好工作，公司每天会统一为大家订购美味加班餐，保证大家肚子饱饱、吃饭香香、请奋斗在前线的每一位同学们提前邮件回复当日餐品以便于我能够合理计算当日订餐数量！！！ 订餐截止时间：17点00分  请在17点之前回复，17点或之后选餐结束   谢谢！
     </textarea>
   </div>
 </div>

@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import List from '@/components/list/list';
+import foodsApi from '@/apis/food';
 
 export default {
   name: 'FoodMenu',
@@ -11,7 +12,12 @@ export default {
     return {
       showFoodCart: false,
       cart: [],
+      todayMenu: null,
     };
+  },
+
+  created() {
+    this.getTodayMenu();
   },
 
   computed: {
@@ -25,6 +31,13 @@ export default {
   },
 
   methods: {
+    // 获取今日菜单
+    getTodayMenu() {
+      foodsApi.todayMenu().then((res) => {
+        this.todayMenu = res;
+      });
+    },
+
     // 发布今日菜单
     publish() {
       console.log('DEBUG publish food menu');
@@ -39,6 +52,11 @@ export default {
       // checkRow 是从 List 组件继承的方法
       this.checkRow(item, true);
       this.cart.push(item.id);
+    },
+
+    // 页面跳转 state is like { name: 'menu' } or /menu
+    routeTo(state) {
+      this.$router.push(state);
     },
   },
 };
