@@ -25,6 +25,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import FileUpload from 'vue-upload-component';
 import foodsApi from '@/apis/food';
 
@@ -38,15 +39,42 @@ export default {
     return {
       food: {
         image: [],
+        name: '',
+        desc: '',
       },
 
       imagePreview: null,
+      file: null,
     };
   },
 
   methods: {
     add() {
-      foodsApi.uploadFoodPic();
+      // TODO handle picture upload later
+      // return foodsApi.uploadFoodPic(this.file)
+      //   .then((picUrl) => {
+      //     console.log(picUrl);
+      //     return foodsApi.addFood({
+      //       name: this.food.name,
+      //       description: this.food.desc,
+      //       picture: picUrl,
+      //     });
+      //   })
+      //   .then((res) => {
+      //     debugger;
+      //     console.log(res);
+      //   });
+
+      foodsApi.addFood({
+        picture: '',
+        name: this.food.name,
+        description: this.food.desc,
+      }).then(() => {
+        new Noty({
+          text: '添加成功',
+          type: 'success',
+        }).show();
+      });
     },
 
     handleFileInput(file) {
@@ -54,7 +82,9 @@ export default {
       // 上传
 
       this.imagePreview = window.URL.createObjectURL(file.file);
-      console.log('####', this.imagePreview);
+      foodsApi.uploadFoodPic(file.file);
+    },
+
       // this.upload(type, file.file)
       //   .then(res => {
       //     const params = {};
@@ -62,7 +92,6 @@ export default {
       //     // 将图片地址同步到外观定制设置
       //     this.updateSurfaceConfig(params);
       //   });
-    },
   },
 };
 </script>
