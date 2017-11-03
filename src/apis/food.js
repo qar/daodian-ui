@@ -19,11 +19,16 @@ function todayMenu() {
 }
 
 function uploadFoodPic(file) {
+  const data = new FormData();
+  data.append('picture', file);
+
   return $http.request({
     method: 'POST',
     url: '/api/upload',
-    data: file,
-  });
+    headers: { 'Content-Type': 'multipart/form-data',
+    },
+    data,
+  }).then(res => res.data);
 }
 
 export default {

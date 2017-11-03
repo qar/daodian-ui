@@ -15,8 +15,8 @@
       </div>
 
       <div class="food-desc">
-        <dao-input type="text"></dao-input>
-        <textarea class="dao-control" rows="10"></textarea>
+        <dao-input type="text" v-model="food.name"></dao-input>
+        <textarea class="dao-control" rows="10" v-model="food.desc"></textarea>
 
         <div class="dao-btn blue" @click="add">添加</div>
       </div>
@@ -50,31 +50,23 @@ export default {
 
   methods: {
     add() {
-      // TODO handle picture upload later
-      // return foodsApi.uploadFoodPic(this.file)
-      //   .then((picUrl) => {
-      //     console.log(picUrl);
-      //     return foodsApi.addFood({
-      //       name: this.food.name,
-      //       description: this.food.desc,
-      //       picture: picUrl,
-      //     });
-      //   })
-      //   .then((res) => {
-      //     debugger;
-      //     console.log(res);
-      //   });
-
-      foodsApi.addFood({
-        picture: '',
-        name: this.food.name,
-        description: this.food.desc,
-      }).then(() => {
-        new Noty({
-          text: '添加成功',
-          type: 'success',
-        }).show();
-      });
+      return foodsApi.uploadFoodPic(this.file.file)
+        .then((picUrl) => {
+          foodsApi.addFood({
+            picture: picUrl.url,
+            name: this.food.name,
+            description: this.food.desc,
+          })
+          .then(() => {
+            new Noty({
+              text: '添加成功',
+              type: 'success',
+            }).show();
+          });
+        })
+        .then((res) => {
+          console.log(res);
+        });
     },
 
     handleFileInput(file) {
@@ -82,16 +74,8 @@ export default {
       // 上传
 
       this.imagePreview = window.URL.createObjectURL(file.file);
-      foodsApi.uploadFoodPic(file.file);
+      this.file = file;
     },
-
-      // this.upload(type, file.file)
-      //   .then(res => {
-      //     const params = {};
-      //     params[type] = res.image_path;
-      //     // 将图片地址同步到外观定制设置
-      //     this.updateSurfaceConfig(params);
-      //   });
   },
 };
 </script>
