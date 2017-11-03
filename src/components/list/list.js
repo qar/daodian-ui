@@ -74,8 +74,6 @@ export default {
         // 如果取消选中就移除掉
         _.remove(this.selectedRows, row);
       }
-
-      console.log('###### ', row, this.selectedRows);
     },
     // 点击某一行的事件
     click(row, event) {

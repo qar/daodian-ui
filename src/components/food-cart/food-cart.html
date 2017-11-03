@@ -23,6 +23,12 @@
           <td class="name">
             <div class="item-major">{{ item.name }}</div>
           </td>
+
+          <td class="operation">
+            <button class="dao-btn red has-icon" @click="removeFromCart(item)">
+              <span class="text">移出</span>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

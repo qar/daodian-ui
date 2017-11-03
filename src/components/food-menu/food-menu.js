@@ -10,12 +10,17 @@ export default {
   data() {
     return {
       showFoodCart: false,
+      cart: [],
     };
   },
 
   computed: {
     cartCount() {
-      return this.selectedRows.length;
+      return this.cart.length;
+    },
+
+    selected() {
+      return this.rows.filter(row => this.cart.indexOf(row.id) >= 0);
     },
   },
 
@@ -26,13 +31,14 @@ export default {
     },
 
     removeFromCart(item) {
-      this.checkRow(item, false);
+      this.cart = this.cart.splice(item.id);
     },
 
     // 加到菜篮子
     addToCart(item) {
       // checkRow 是从 List 组件继承的方法
       this.checkRow(item, true);
+      this.cart.push(item.id);
     },
   },
 };
