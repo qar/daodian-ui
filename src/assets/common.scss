@@ -1,0 +1,421 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+
+// $navbar-inverse-link-color: #5AADBB;
+// $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+@import '~daoColor';
+// @import './outdated-browser.scss';
+// @import './chart.scss';
+// @import './dao-view.scss';
+// @import './colorful-table.scss';
+
+html {
+  min-width: 1280px !important;
+  overflow-x: auto !important;
+  height: 100%;
+}
+
+body {
+  // 解决 tooltip、popover append to body 后小于 1280 时候错位问题
+  position: relative;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Arial Nova", "Segoe UI", "Helvetica Neue", ".PingFang SC", "PingFang SC", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "Hiragino Sans GB", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  cursor: pointer !important;
+}
+
+// 解决 codemirror 中 pre 里的内容超出边界
+pre {
+  white-space: pre-line;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.v-middle {
+  vertical-align: middle!important;
+}
+
+// 让列表中的非 ellipsis 的 tooltip 居中显示
+// 可参见 podlist 中的镜像列
+.tooltip-wrapper {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: inline-block;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.text-right {
+  text-align: right!important;
+}
+
+.text-left {
+  text-align: left!important;
+}
+
+.text-primary {
+  color: $blue!important;
+}
+
+.text-danger {
+  color: $red!important;
+  fill: $red!important;
+  svg {
+    fill: $red!important;
+  }
+}
+
+.text-muted {
+  color: #aaa!important;
+}
+
+.text-success {
+  color: $green!important;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.cursor-hand {
+  cursor: pointer!important;
+}
+
+.width-full {
+  width: 100%;
+}
+
+// Cin 的神奇代码，可以生成一堆 margin 和 padding 的 class。
+// 形如 .mt-md .mb-xs .p-none，分为 (m|p)(t|r|b|l)?-(none|xs|sm|md|lg) 这样子的样式规格
+// 定义边距变量
+$help-box-blanks: ('.m': 'margin', '.p': 'padding');
+// 循环，是 margin 还是 padding
+@each $help-box-blank-class, $help-box-blank in $help-box-blanks {
+  // 定义尺寸变量
+  $help-box-sizes: ('-none': 0px, '-xs': 5px, '-sm': 10px, '-md': 15px, '-lg': 20px);
+  // 循环尺寸
+  @each $help-box-size-class, $help-box-size in $help-box-sizes {
+    #{$help-box-blank-class}#{$help-box-size-class} {
+      #{$help-box-blank}: $help-box-size !important;
+    }
+    // 定义方向变量
+    $help-box-directions: ('t': '-top', 'r': '-right', 'b': '-bottom', 'l': '-left');
+    // 循环方向 上、右、下、左
+    @each $help-box-direction-class, $help-box-direction in $help-box-directions {
+      #{$help-box-blank-class}#{$help-box-direction-class}#{$help-box-size-class} {
+        #{$help-box-blank}#{$help-box-direction}: $help-box-size !important;
+      }
+    }
+  }
+}
+
+$hr-color: $white-dark;
+hr {
+  border: none;
+  border-top: 1px solid $hr-color;
+  // 左右两边有渐变的hr
+  &.hr-gradient {
+    border-top: none;
+    background: linear-gradient(to right, white 0, $hr-color 30px, $hr-color calc(100% - 30px), white 100%);
+    margin: 0;
+    height: 1px;
+  }
+}
+
+.loading-icon {
+  width: 40px;
+  height: 40px;
+  transform-origin: 50% 50%;
+  animation: rotate 1.1s infinite linear;
+  fill: #5D9CEC;
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
+.template {
+  &.icon-lock {
+    fill: $black-dark;
+  }
+}
+
+.mustache {
+  display: inline-block;
+  transform: rotate(-90deg);
+  width: 20px;
+  text-align: center;
+}
+
+// no permission icon in dao-list-item should hack
+.dao-list-item svg.icon {
+  display: inline;
+  position: static;
+}
+
+.with-padding-layout {
+  padding: 40px;
+}
+
+.multi-step-footer {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+// 带特殊的 cp block 的列表样式
+.with-cmd-form {
+  overflow: visible;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  border-left: 1px solid $white-dark;
+  border-top: 1px solid $white-dark;
+  .item {
+    flex: 1;
+    max-width: 50%;
+    min-width: 50%;
+    padding: 1em 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+    border-right: 1px solid $white-dark;
+    border-bottom: 1px solid $white-dark;
+  }
+  .cmd {
+    flex: 1 1 auto;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 10px;
+    background: $white-light;
+  }
+  .dao-control {
+    width: 60%;
+    margin: 0!important;
+  }
+  .dao-input-container {
+    width: 60%;
+  }
+  .dao-select {
+    width: 60%;
+  }
+}
+
+.white-clipboard {
+  background: #fff;
+}
+
+.dao-select-dropdown {
+  z-index: 12;
+}
+
+// 文件上传按钮样式
+.uploadFile {
+  position: relative;
+  input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  // 这个用来解决 file input 光标不会变成小手的问题。但是对于非 webkit 内核浏览器可能就没用了。
+  input[type="file"]::-webkit-file-upload-button {
+    cursor: pointer;
+    width: 0px;
+  }
+}
+
+a.disable-link {
+  color: inherit!important;
+  cursor: default!important;
+  pointer-events: none!important;
+}
+
+.readme-markdown {
+  ol, ul {
+    padding-left: 40px;
+    margin: 14px 0;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0.83em 0;
+  }
+  p {
+    margin: 1em 0;
+  }
+}
+
+.dao-table-page {
+  margin-top: 10px;
+  height: 32px;
+}
+
+.dao-table-page-span {
+  display: inline-block;
+  margin-left: 20px;
+  color: $grey-dark;
+}
+
+// 各个详情页的header部分
+.wrapper-header {
+  $padding-horizon: 40px; //水平方向边距
+  // margin: 0 (-$padding-horizon) 20px (-$padding-horizon);
+  a:hover {
+    cursor: pointer;
+  }
+  .header-top {
+    padding: 20px $padding-horizon;
+    border-bottom: solid 1px #e4e7ed;
+    background-color: #ffffff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .header-img {
+      margin-right: 20px;
+      height: 100px;
+      svg,
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 4px;
+      }
+    }
+    .header-content {
+      flex-grow: 1;
+      .content-top {
+        height: 32px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .header-name {
+          max-width: 70%;
+          font-size: 25px;
+          line-height: 25px;
+          color: #595f69;
+        }
+        .header-btn-group {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .content-bottom {
+        min-height: 48px;
+        color: #9ba3af;
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        position: relative;
+        .content-item {
+          font-size: 14px;
+          line-height: 24px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .header-bottom {
+    padding: 7px $padding-horizon;
+    border-bottom: solid 1px #e4e7ed;
+    box-shadow: 0px 1px 4px 0px rgba(204, 209, 217, 0.3);
+    background-color: #fbfcfc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 13px;
+    line-height: 24px;
+    color: #9ba3af;
+    [class^=col-] {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .col-3 {
+      width: 25%;
+    }
+    .col-4 {
+      width: 33.33%;
+    }
+    .col-6 {
+      width: 50%;
+    }
+    .col-8 {
+      width: 66.66%;
+    }
+  }
+  .table-count {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.scrollable-table {
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  table {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    height: 10px;
+    background-color: #e4e7ed;
+    background-clip: padding-box;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+  }
+}

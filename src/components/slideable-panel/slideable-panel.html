@@ -1,0 +1,11 @@
+<div class="slideable-panel-wrap">
+  <div class="slideable-panel-backdrop"
+    :class="{'active': active}"
+    v-show="active"
+    @click="close"></div>
+  <div class="slideable-panel"
+    :class="{'active': active}">
+    <svg class="close" v-if="withCloseBtn" @click="close"><use xlink:href="#icon_cross"></use></svg>
+    <slot></slot>
+  </div>
+</div>

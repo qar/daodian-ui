@@ -1,0 +1,62 @@
+// 注：这个文件的代码都是从原项目抄过来的
+@import '~@/assets/common.scss';
+@import '~@/assets/dao-view.scss';
+@import '~daoColor';
+
+// 应用详情container属性
+.application-detail {
+  .dao-view-header { //此处有修改 wrapper-header --> dao-view-header
+    .loading-icon {
+      cursor: pointer;
+      height: 1em;
+      width: 1em;
+      vertical-align: middle;
+      &.loading-icon-cancel {
+        animation: none;
+        position: absolute;
+        top: 6px;
+      }
+    }
+    .loading-status {
+      vertical-align: middle
+    }
+  }
+  // 下拉框遮住了页脚，修改 dao-style 的影响太大，我觉得暂且这么修改就挺好
+  .dao-select {
+    z-index: 1001;
+  }
+  .empty-tab{
+    font-size: 20px;
+    text-align: center;
+    color: #aaa;
+    margin: 135px;
+  }
+}
+
+.access-point-col{
+  min-width: 33.33%;
+  position: relative;
+  padding-left: 4em;
+}
+
+.access-point-col-item {
+  display:inline-block;
+  max-width: calc(100% - 70px);
+}
+
+.access-point-col-span {
+  display: inline-block;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.app-detail-cd-opt.disabled {
+  &, &:hover, &:active, &:visited, &:focus {
+    color: $grey-light;
+    // 因为 a 标签的 cursor important 了，为了解决优先级问题，这里的 cursor 也需要 important
+    cursor: not-allowed!important;
+    pointer-events: auto;
+  }
+}

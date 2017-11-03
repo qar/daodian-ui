@@ -1,0 +1,32 @@
+<nav class="dao-left-nav">
+  <div class="logo">
+    <router-link tag="div" to="/">
+      <img src="/static/brand.png">
+    </router-link>
+  </div>
+
+  <div class="dao-left-nav-section">
+    <div class="dao-left-nav-group">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'todayMenu' }" @click="routeTo({ name: 'todayMenu' })">
+        <span class="dao-left-nav-ul-title-name">今日菜单</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dao-left-nav-section">
+    <div class="dao-left-nav-group">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'historyMenu' }" @click="routeTo({ name: 'historyMenu' })">
+        <span class="dao-left-nav-ul-title-name">历史菜单</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dao-left-nav-section">
+    <div class="dao-left-nav-group">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'menu' }" @click="routeTo({ name: 'menu' })">
+        <span class="dao-left-nav-ul-title-name">菜品库</span>
+      </div>
+    </div>
+  </div>
+</nav>
+

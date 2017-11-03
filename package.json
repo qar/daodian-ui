@@ -14,10 +14,17 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.17.0",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "noty": "^3.1.3",
+    "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-upload-component": "^2.6.3"
   },
   "devDependencies": {
+    "dao-style-package-vue": "git+https://cisy@bitbucket.org/cisy/dao-style-package-vue.git",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",

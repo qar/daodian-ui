@@ -1,0 +1,62 @@
+<div class="menu-list">
+  <div class="menu-header">
+    <div class="search-box">
+      <dao-input placeholder="Search" :search="true"></dao-input>
+    </div>
+  </div>
+
+  <table class="menu-content dao-table slat">
+    <thead>
+      <tr>
+        <th class="thumbnail name th-name">
+          <span>图片</span>
+        </th>
+
+        <th class="date">
+          <span>时间</span>
+        </th>
+
+        <th class="operation"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in chunks[page]">
+        <td class="thumbnail name td-name">
+          <img :src="food.picture" class="thumbnail" v-for="food in item.foods" :title="food.name">
+        </td>
+
+        <td class="date">
+          <div class="item-major">截至时间: {{ item.deadline }}</div>
+          <div class="item-minor">创建时间: {{ item.pub_date }}</div>
+        </td>
+
+        <td class="operation">
+          <button class="dao-btn green has-icon" @click="routeTo({ name: 'menuDetail', id: item.id })">
+            <span class="text">查看详情</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="dao-table-page">
+    <div class="dao-btn-group">
+      <button class="dao-btn dao-icon ghost" @click="prev" :disabled="page === 0">
+        <svg class="icon">
+          <use xlink:href="#icon_caret-left"></use>
+        </svg>
+      </button>
+      <button class="dao-btn dao-icon ghost" @click="next" :disabled="chunks.length === 0 || page === chunks.length - 1">
+        <svg class="icon">
+          <use xlink:href="#icon_caret-right"></use>
+        </svg>
+      </button>
+    </div>
+    <span class="dao-table-page-span">
+    {{ chunks.length > 0 ? page * limit + 1 : 0 }}
+      -
+    {{ chunks.length === 0 || page === chunks.length - 1 ? currentRows.length : page * limit + limit }}
+    ，共 {{ currentRows.length }} 个{{tableName}}
+    </span>
+  </div>
+</div>

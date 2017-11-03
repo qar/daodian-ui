@@ -1,0 +1,70 @@
+@import '~daoColor';
+
+.slideable-panel-wrap {
+  z-index: 1003;
+}
+.slideable-panel-backdrop {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: #595f69;
+  transition: opacity .3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  z-index: 10;
+  &.active {
+    opacity: .3;
+  }
+}
+
+.slideable-panel {
+  position: fixed;
+  width: 60%;
+  min-width: 766px;
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  z-index: 11;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform .3s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+  transform: translate(100%);
+  box-shadow: -3px 0 3px rgba(0, 0, 0, .1);
+  &.active {
+    transform: translate(0);
+  }
+  .close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    fill: $grey-light;
+    transition: fill .3s;
+    &:hover {
+      fill: $grey-dark;
+      cursor: pointer;
+    }
+  }
+  // 因为修改的是子组件的样式，所以需要使用 /deep/
+  & /deep/ .wrap-template {
+    background-color: $white-dark-lighter;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  // header 是基于  dao-view-header 在 dao-view.scss 文件中覆盖了部分样式
+  & /deep/ .wrapper-content {
+    padding: 21px 30px;
+    overflow: auto;
+    .accordion {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 400ms ease;
+      &.active {
+        max-height: 10000px;
+      }
+    }
+  }
+}

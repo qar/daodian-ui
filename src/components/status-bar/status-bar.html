@@ -1,0 +1,21 @@
+<div class="dao-status-bar">
+  <section class="versatile-bar"></section>
+  <section class="horizontal-bar"></section>
+  <section class="user-bar">
+    <dao-dropdown trigger="click" :append-to-body="false"
+      class="user-profile">
+      <div class="info">
+        <span class="name">Admin</span>
+      </div>
+      <svg><use xlink:href="#icon_caret-down"></use></svg>
+      <dao-dropdown-menu slot="list" class="user-dropdown-menu">
+        <dao-dropdown-item >
+          <router-link tag="div" to="/security/user-management">
+            <svg><use xlink:href="#icon_user"></use></svg>
+            成员管理
+          </router-link>
+        </dao-dropdown-item>
+      </dao-dropdown-menu>
+    </dao-dropdown>
+  </section>
+</div>

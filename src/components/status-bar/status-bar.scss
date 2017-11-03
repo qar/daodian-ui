@@ -1,0 +1,471 @@
+// 此组件样式从原项目复制而来，略作修改，表现一致
+$white-dark: #e4e7ed;
+$white-light: #f5f7fa;
+$black-light: #595f69;
+$grey-dark: #9ba3af;
+$grey-light: #ccd1d9;
+$logo-bg: #25282d;
+$blue: #3890ff;
+$radial-blue-border: #c1ddff;
+$red: #f1483f;
+$orange: #f56e25;
+$pink: #fef1f0;
+$status-bar-height: 61px;
+@mixin status-bar-round() {
+  border-radius: 18px;
+  height: 36px;
+  width: 36px;
+}
+
+.dao-status-bar {
+  background: white;
+  height: $status-bar-height;
+  display: flex;
+  border-bottom: $white-dark 1px solid;
+  z-index: 1002;
+  section svg {
+    height: 16px;
+    width: 16px;
+    fill: currentColor;
+  }
+  span {
+    white-space: nowrap;
+  }
+  section {
+    border-right: $white-dark 1px solid;
+    &.dce-logo {
+      position: relative;
+      width: 200px;
+      height: $status-bar-height;
+      .svg-container, img {
+        height: $status-bar-height;
+        display: block;
+        &:before {
+          content: '';
+          position: absolute;
+          height: 61px;
+          width: 100%;
+          background-color: $logo-bg;
+        }
+      }
+      .svg-container {
+        width: 200px;
+        svg {
+          transform-origin: center;
+          transform: translateZ(0);
+          width: 200px;
+          height: $status-bar-height;
+        }
+      }
+      img {
+        transform: translateZ(0);
+        margin: 0 auto;
+        &:before {
+          background-color: transparent;
+        }
+      }
+    }
+    &.versatile-bar{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      line-height: $status-bar-height;
+      color: $black-light;
+      .dao-select{
+        display: inline-block;
+        line-height: 1;
+        vertical-align: baseline !important;
+        width: 160px;
+        margin: 0 12px 0 40px;
+      }
+    }
+    $animation-speed: 0.7;
+    &.notification-bar{
+      padding: 0 16px;
+      display: flex;
+      .notification {
+        @include status-bar-round();
+        transition: 500ms*$animation-speed linear all;
+        display: inline-flex;
+        border: 1px solid;
+        border-color: $grey-light;
+        border-radius: 50%;
+        margin: auto 10px;
+        position: relative;
+        a {
+          margin: auto;
+          height: 16px;
+        }
+        .dao-dropdown-rel,
+        .dao-tooltip-rel,
+        .dao-popover-rel {
+          margin: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+        .dao-tooltip-inner {
+          word-break: keep-all;
+        }
+        svg.notification-icon {
+          opacity: 1;
+          transform: scale(1);
+          transition: 700ms*$animation-speed 300ms*$animation-speed linear all;
+          fill: $grey-light;
+          color: $grey-light;
+        }
+        &:hover {
+          border: 1px solid $grey-dark;
+          svg.notification-icon {
+            fill: $grey-dark;
+          }
+        }
+        svg.radial-progress-bar {
+          @include status-bar-round();
+          opacity: 0;
+          position: absolute;
+          top: -1px;right: -1px;left: -1px;bottom: -1px;
+          circle {
+            -webkit-transition: stroke-dasharray .25s;
+            transition: stroke-dasharray .25s;
+            cx: 18px;
+            cy: 18px;
+            r: 16px;
+            stroke-width: 4px;
+            fill: none;
+            &.bg {
+              stroke: $radial-blue-border;
+            }
+            &.paint {
+              stroke: $blue;
+              transform: matrix(0,-1,1,0,0,36);
+            }
+          }
+        }
+        span.notification-icon,
+        span.notification-number,
+        span.task-number {
+          opacity: 0;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          line-height: 1;
+          font-size: 14px;
+          &.task-number {
+            color: $blue;
+          }
+          &.notification-number {
+            color: white;
+          }
+        }
+        &.has-task {
+          border-color: transparent;
+          svg.radial-progress-bar {
+            content: '';
+            animation: change-border 300ms*$animation-speed 500ms*$animation-speed forwards;
+            @keyframes change-border {
+              from {
+                transform: scale(1.15);
+                opacity: 1;
+              }
+              to {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+          }
+          // circle {
+          //   -webkit-transition: stroke-dasharray .25s;
+          //   transition: stroke-dasharray .25s;
+          // }
+          svg.notification-icon {
+            opacity: 0;
+            transform: scale(0);
+          }
+          span.task-number {
+            animation: number-show 700ms*$animation-speed 900ms*$animation-speed forwards;
+            // animation-direction: alternate;
+            @keyframes number-show {
+              from {
+                opacity: 0.25;
+                transform: translate(-50%, -50%) scale(0.66);
+              }
+              14% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(0.88);
+              }
+              28% {
+                opacity: 0.75;
+                transform: translate(-50%, -50%) scale(1.1);
+              }
+              42% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.33);
+              }
+              56% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.93);
+              }
+              70% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.93);
+              }
+              84% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.96);
+              }
+              to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+              }
+            }
+          }
+        }
+        &.has-warning {
+          border: none;
+          background-color: $red;
+          .notification-icon {
+            display: none;
+          }
+          span.notification-number {
+            opacity: 1;
+            color: white;
+          }
+        }
+      }
+    }
+    &.user-bar{
+      padding: 0 30px;
+      display: flex;
+      div.user-profile {
+        margin: auto;
+        cursor: pointer;
+        img.avatar {
+          @include status-bar-round();
+          margin-right: 14px;
+        }
+        div.info {
+          display: inline-block;
+          vertical-align: middle;
+          min-width: $status-bar-height;
+          span.name {
+            display: block;
+            font-size: 14px;
+            color: #3d444f;
+          }
+          span.permisson {
+            display: block;
+            font-size: 12px;
+            color: $grey-dark;
+          }
+        }
+        svg {
+          display: inline-block;
+          vertical-align: middle;
+          fill: $grey-dark;
+        }
+        .dao-dropdown-menu {
+          z-index: 100000;
+          li svg {
+            margin-right: 5px;
+            vertical-align: text-bottom;
+            fill: currentcolor;
+          }
+        }
+      }
+    }
+  }
+  .dao-popover-popper .dao-popover-arrow /deep/ .pt-popover-arrow-fill {
+    fill: $white-light;
+  }
+}
+
+.user-dropdown-menu {
+  margin-top: 10px;
+}
+
+.dao-popover.status-bar-popover {
+  border: 1px solid $white-dark;
+  padding: 0;
+  svg {
+    height: 16px;
+    width: 16px;
+    fill: currentColor;
+  }
+  .dao-popover-arrow svg {
+    width: 30px;
+    height: 30px;
+  }
+  .dao-popover-title {
+    height: 45px;
+    text-align: center;
+    padding: 0;
+    line-height: 45px;
+    font-size: 14px;
+    font-weight: normal;
+    color: $black-light;
+    background-color: $white-light;
+    box-shadow: inset 0 -1px 0 rgba(204,209,217,.5);
+    border-radius: 5px 5px 0 0;
+  }
+  .dao-popover-popper {
+    line-height: 18px;
+    .dao-popover-inner {
+      padding: 0;
+      max-width: none;
+    }
+  }
+  .arrow {
+    border-bottom-color: #ddd;
+  }
+  .arrow:after {
+    border-bottom-color: $white-light;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    li{
+      display: block;
+      width: 250px;
+      padding: 12px 14px;
+      margin: 0;
+      border-bottom: 1px solid $white-dark;
+      .warning-text {
+        width: 90%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &.footer-bar{
+        display: flex;
+        height: 32px;
+        background-color: $white-light;
+        margin: auto;
+        padding: 0;
+        padding-left: 168px;
+        border: none;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        a {
+          margin: auto;
+          display: block;
+          font-size: 13px;
+        }
+      }
+    }
+    &.status-bar-tasks {
+      li.task {
+        display: flex;
+        height: 70px;
+        .info {
+          width: 165px;
+          margin: 0 8px;
+          transform: translateY(-3px);
+          .name, .progress-bar, .status {
+            display: inline-block;
+          }
+          .name {
+            font-size: 13px;
+            font-weight: 500;
+            color: $black-light;
+            max-width: 206px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .task-progress {
+            float: left;
+            position: relative;
+            width: 100%;
+            margin: 1px 0;
+            border-radius: 7px;
+            height: 8px;
+            box-shadow: 0 0 0 1px $white-dark inset;
+            background-color: $white-light;
+            overflow: hidden;
+            .task-progress-bar {
+              position: absolute;
+              transition: 1s ease;
+              border: #5696ed 1px solid;
+              background-color: #5ca1fa;
+              height: 8px;
+              width: 0%;
+            }
+          }
+          .status {
+            font-size: 12px;
+            width: 100%;
+            height: 12px;
+            color: $grey-dark;
+          }
+        }
+        .actions {
+          margin: auto;
+          .action {
+            display: inline-flex;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            margin: auto;
+            fill: #ccd1d9;
+            transform: translateY(1px);
+            &+ .action {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+      li.footer-bar{
+        height: 32px;
+        background-color: $white-light;
+        display: flex;
+        margin: auto;
+        padding-left: 168px;
+        a{
+          margin: auto;
+          display: block;
+          font-size: 13px;
+        }
+      }
+    }
+    &.status-bar-warnings {
+      li.warning-li {
+        span.warning-title {
+          font-size: 13px;
+          font-weight: 500;
+          display: inline-block;
+          transform: translateY(-3px);
+          margin-left: 5.5px;
+          color: $black-light;
+        }
+        p.warning-text {
+          font-size: 12px;
+          margin-left: 21.5px;
+          margin-bottom: 0;
+          color: $grey-dark;
+        }
+        .warning-solution {
+          display: block;
+          margin-left: 21.5px;
+          padding: 6px 12px;
+        }
+        &.error {
+          background-color: $pink;
+          svg {
+            fill: $red;
+          }
+        }
+        &.warning {
+          svg {
+            fill: $orange;
+          }
+        }
+      }
+    }
+  }
+}
+
+
