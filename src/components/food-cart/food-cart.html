@@ -4,7 +4,7 @@
       <div class="dao-btn green">发布</div>
     </div>
 
-    <table class="menu-content dao-table slat">
+    <table class="menu-content dao-table slat" v-if="rows && rows.length">
       <thead>
         <tr>
           <th class="thumbnail">
@@ -39,5 +39,7 @@
         </tr>
       </tbody>
     </table>
+
+    <empty-state v-if="!rows || !rows.length" text="还没有添加菜品, 饿着肚子怎么行" class="empty-state"></empty-state>
   </div>
 </div>
