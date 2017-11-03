@@ -1,16 +1,20 @@
 /* eslint-disable no-console */
-import foodsApi from '@/apis/food';
-
 export default {
   name: 'MenuDetail',
+  props: {
+    menu: {
+      type: Object,
+      default: null,
+    },
+  },
 
   created() {
-    this.getTodayMenu();
+    console.log('%$%%$%$$$ ', this.menuDetail, this.menu);
   },
 
   data() {
     return {
-      todayMenu: null,
+      menuDetail: this.menu,
 
       content: 'foods',
 
@@ -23,13 +27,19 @@ export default {
     };
   },
 
-  methods: {
-    getTodayMenu() {
-      foodsApi.todayMenu().then((res) => {
-        this.todayMenu = res;
-        console.log('####', res);
-      });
+  watch: {
+    menu(newV) {
+      this.menuDetail = newV;
     },
+  },
+
+  methods: {
+    // jgetTodayMenu() {
+    // j  foodsApi.todayMenu().then((res) => {
+    // j    this.todayMenu = res;
+    // j    console.log('####', res);
+    // j  });
+    // j},
   },
 };
 

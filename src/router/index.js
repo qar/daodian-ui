@@ -4,6 +4,7 @@ import MenuPage from '@/pages/menu';
 import NewItemPage from '@/pages/new';
 import DailyPublishPage from '@/pages/daily';
 import TodayMenuPage from '@/pages/today-menu';
+import MenuDetailPage from '@/pages/menu-detail';
 import HistoryMenuPage from '@/pages/history-menu';
 
 Vue.use(Router);
@@ -38,6 +39,12 @@ export default new Router({
       path: '/today-menu',
       name: 'todayMenu',
       component: TodayMenuPage,
+    },
+
+    { // 菜单详情
+      path: '/menu-detail/:id',
+      name: 'menuDetail',
+      component: MenuDetailPage,
     },
 
     {

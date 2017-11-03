@@ -1,38 +1,24 @@
 <template>
-  <menu-detail></menu-detail>
+  <menu-detail v-if="todayMenu" :menu="todayMenu"></menu-detail>
 </template>
 
 <script>
 /* eslint-disable */
-
-const foods = [
-  {
-      "add_time": "2017-11-02 15:20:07",
-      "description": "好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃好吃",
-      "id": 1,
-      "last_mod": "2017-11-02 15:20:07",
-      "name": "青椒土豆丝",
-      "picture": "/static/sample.jpg",
-      "rate": 4.5,
-      "rater_count": 100
-  }
-];
-
 import foodsApi from '@/apis/food';
 
 export default {
   name: 'MenuPage',
   data() {
     return {
-      items: foods,
+      todayMenu: null,
     };
   },
 
   created() {
-    console.log('DEBUG on created event');
-    foodsApi.getFoodsList()
-      .then(foods => {
-        console.log('DEBUG got foods', foods);
+    foodsApi.todayMenu()
+      .then(todayMenu => {
+        this.todayMenu = todayMenu;
+        console.log('DEBUG got today\' menu ', this.todayMenu);
       });
   },
 };

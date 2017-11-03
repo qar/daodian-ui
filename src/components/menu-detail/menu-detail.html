@@ -1,9 +1,9 @@
-<div class="application-detail" v-if="todayMenu">
+<div class="application-detail" v-if="menuDetail">
   <div class="dao-view-header">
     <div class="header-top">
       <div class="header-content">
         <div class="content-top">
-          <div class="">{{ todayMenu.description }}</div>
+          <div class="">{{ menuDetail.description }}</div>
         </div>
       </div>
     </div>
@@ -11,11 +11,11 @@
     <div class="header-bottom">
       <div class="col-6">
         <span>创建于：</span>
-        <span>{{ todayMenu.pub_date }}</span>
+        <span>{{ menuDetail.pub_date }}</span>
       </div>
       <div class="col-6">
         <span>截止时间：</span>
-        <span>{{ todayMenu.deadline }}</span>
+        <span>{{ menuDetail.deadline }}</span>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="dao-view-content">
       <dao-setting-layout>
         <dao-setting-section v-if="content === 'foods'">
-          <food-cart v-if="todayMenu" :rows="todayMenu.foods" mode="foodOnly"></food-cart>
+          <food-cart v-if="menuDetail" :rows="menuDetail.foods" mode="foodOnly"></food-cart>
         </dao-setting-section>
       </dao-setting-layout>
     </div>
