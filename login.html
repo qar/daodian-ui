@@ -816,6 +816,7 @@
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           localStorage.setItem("token", JSON.parse(xhr.responseText));
+          window.location.href = '/';
         }
       }
     }
