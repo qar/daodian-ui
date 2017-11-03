@@ -34,7 +34,7 @@ export default new Router({
       component: DailyPublishPage,
     },
 
-    {
+    { // 今日菜单
       path: '/today-menu',
       name: 'todayMenu',
       component: TodayMenuPage,

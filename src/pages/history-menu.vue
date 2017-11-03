@@ -21,7 +21,6 @@ export default {
     menusApi.getMenus()
       .then((menus) => {
         this.items = menus;
-        console.log('##### ', this.items);
       });
   },
 };

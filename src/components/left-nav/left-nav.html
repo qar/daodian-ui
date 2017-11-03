@@ -7,18 +7,24 @@
 
   <div class="dao-left-nav-section">
     <div class="dao-left-nav-group">
-      <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }" @click="routeTo({ name: 'menu' })">
-        <span class="dao-left-nav-ul-title-name">菜品库</span>
-        <span class="dao-numeric-badge">12</span>
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'todayMenu' }" @click="routeTo({ name: 'todayMenu' })">
+        <span class="dao-left-nav-ul-title-name">今日菜单</span>
       </div>
     </div>
   </div>
 
   <div class="dao-left-nav-section">
     <div class="dao-left-nav-group">
-      <div class="dao-left-nav-ul-title" :class="{ 'active': isActive }" @click="routeTo({ name: 'historyMenu' })">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'historyMenu' }" @click="routeTo({ name: 'historyMenu' })">
         <span class="dao-left-nav-ul-title-name">历史菜单</span>
-        <span class="dao-numeric-badge">12</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dao-left-nav-section">
+    <div class="dao-left-nav-group">
+      <div class="dao-left-nav-ul-title" :class="{ 'active': $route.name == 'menu' }" @click="routeTo({ name: 'menu' })">
+        <span class="dao-left-nav-ul-title-name">菜品库</span>
       </div>
     </div>
   </div>
