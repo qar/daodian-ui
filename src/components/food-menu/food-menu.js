@@ -10,7 +10,6 @@ export default {
   data() {
     return {
       showFoodCart: false,
-      selectedItems: [],
     };
   },
 
@@ -26,12 +25,14 @@ export default {
       console.log('DEBUG publish food menu');
     },
 
+    removeFromCart(item) {
+      this.checkRow(item, false);
+    },
+
     // 加到菜篮子
     addToCart(item) {
       // checkRow 是从 List 组件继承的方法
-      this.$nextTick(() => {
-        this.checkRow(this.rows, item);
-      });
+      this.checkRow(item, true);
     },
   },
 };

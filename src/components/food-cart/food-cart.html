@@ -18,23 +18,10 @@
       </thead>
       <tbody>
         <tr v-for="item in chunks[page]">
-          <td class="thumbnail"><img src="/static/sample.jpg" class="thumbnail"></td>
+          <td class="thumbnail"><img :src="item.picture" class="thumbnail"></td>
 
           <td class="name">
-            <div class="item-major">
-              ddd
-            </div>
-            <div class="item-minor">
-              3333
-            </div>
-          </td>
-
-          <td class="operation">
-            <div class="dao-btn-group">
-              <button class="dao-btn ghost has-icon" @click="removeFromCart(item)">
-                <span class="text">移出</span>
-              </button>
-            </div>
+            <div class="item-major">{{ item.name }}</div>
           </td>
         </tr>
       </tbody>

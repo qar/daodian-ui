@@ -46,11 +46,13 @@
         <td class="orders"><div class="item-major">{{ item.rater_count }}</div></td>
 
         <td class="operation">
-          <div class="dao-btn-group">
-            <button class="dao-btn ghost has-icon" @click="addToCart(item)">
-              <span class="text">加到菜篮子</span>
-            </button>
-          </div>
+          <button class="dao-btn green has-icon" @click="addToCart(item)" v-show="!item.checked">
+            <span class="text">加到菜篮子</span>
+          </button>
+
+          <button class="dao-btn red has-icon" @click="removeFromCart(item)" v-show="item.checked">
+            <span class="text">移出</span>
+          </button>
         </td>
       </tr>
     </tbody>

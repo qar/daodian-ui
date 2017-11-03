@@ -3,6 +3,10 @@ import List from '@/components/list/list';
 
 export default {
   name: 'FoodMenu',
+  extends: List,
+
+  created() {}, // 重置 List 组件的 created hook
+
   props: {
     rows: {
       type: Array,
@@ -10,17 +14,14 @@ export default {
     },
   },
 
-  extends: List,
-
   methods: {
     // 发布今日菜单
     publish() {
       console.log('DEBUG publish food menu');
     },
 
-    // 添加菜品
-    add() {
-      console.log('DEBUG add a dish');
+    removeFromCart(item) {
+      this.$emit('remove', item);
     },
   },
 };
